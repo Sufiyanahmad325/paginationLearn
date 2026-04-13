@@ -20,16 +20,15 @@ app.get('/getpage', (req, res) => {
 
 
 app.get("/products", async (req, res) => {
-    const page = parseInt(req.query.page) || 1
-    const limit = 10
-
-    const skip = (page - 1) * limit
+    const page = req.query.page || 1
+    const limit = (page - 1 ) * 10
 
     const data = await Card.find()
-        .skip(skip)
-        .limit(limit)
+    .skip(limit)
+    .limit(10)
 
-    console.log('data ======> ', data)
+    console.log(Date)
+
     const total = await Card.countDocuments()
 
     return res.status(201).json({
