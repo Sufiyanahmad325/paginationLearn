@@ -32,7 +32,8 @@ app.get("/products", async (req, res) => {
     console.log('data ======> ', data)
     const total = await Card.countDocuments()
 
-    return res.json({
+    return res.status(201).json({
+        success:true,
         data,
         total,
         page,
